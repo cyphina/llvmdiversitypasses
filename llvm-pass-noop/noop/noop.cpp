@@ -7,6 +7,7 @@
 #include <llvm/Transforms/IPO/PassManagerBuilder.h>
 #include <llvm/CodeGen/Passes.h>
 #include <llvm/CodeGen/TargetSubtargetInfo.h>
+#include <llvm/Support/RandomNumberGenerator.h>
 #include "llvm/Pass.h"
 
 #define GET_INSTRINFO_ENUM
@@ -22,9 +23,20 @@ namespace llvm {
   }
 
   bool NoopInserter::runOnMachineFunction(llvm::MachineFunction &fn) {
-    const llvm::TargetInstrInfo &TII = *fn.getSubtarget().getInstrInfo();
+    //if(!RNG)
+      //RNG.reset(fn.getFunction().getParent()->createRNG(this));
+
+    auto RNG = fn.getFunction().getParent()->createRNG(this);
+
+    const llvm::TargetInstrInfo &TII = *(fn.getSubtarget().getInstrInfo());
     MachineBasicBlock& bb = *fn.begin();
-    llvm::BuildMI(bb, bb.begin(), llvm::DebugLoc(), TII.get(llvm::X86::NOOP));
+
+    int numNoops = (*RNG)() % 100;
+
+    for(int i = 0; i < numNoops; ++i)
+    {
+      llvm::BuildMI(bb, bb.begin(), llvm::DebugLoc(), TII.get(llvm::X86::NOOP));
+    }
     return true;
   }
 
