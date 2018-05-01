@@ -43,14 +43,19 @@ declare i32 @__cxa_atexit(void (i8*)*, i8*, i8*) #2
 ; Function Attrs: norecurse uwtable
 define i32 @main(i32 %agrc, i8** %agrv) #3 {
   %sdfasdf = alloca double
+  store double 2.000000e+00, double* %sdfasdf
   %1 = alloca i32, align 4
   %dfasdf = alloca double
+  store double 2.000000e+00, double* %dfasdf
   %2 = alloca i8**, align 8
   %fasdf = alloca double
+  store double 2.000000e+00, double* %fasdf
   %number = alloca i32, align 4
   %asdf = alloca double
+  store double 2.000000e+00, double* %asdf
   %papaya = alloca i32, align 4
   %sdf = alloca double
+  store double 2.000000e+00, double* %sdf
   %banana = alloca i32, align 4
   store i32 %agrc, i32* %1, align 4
   store i8** %agrv, i8*** %2, align 8

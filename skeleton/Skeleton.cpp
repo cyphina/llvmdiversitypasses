@@ -27,6 +27,7 @@ struct SkeletonPass : public FunctionPass {
         // if this instruction is an an assignment instruction
         if (strcmp(I.getOpcodeName(), "alloca") == 0) {
           auto *ai = builder.CreateAlloca(Type::getDoubleTy(TheContext), 0, "asdfasdf" + ++i);
+          builder.CreateStore(ConstantFP::get(Type::getDoubleTy(TheContext), 2), ai);
           //ai->insertAfter(&I);
           // We modified the code.
         }
