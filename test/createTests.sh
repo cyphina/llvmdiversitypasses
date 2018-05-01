@@ -1,5 +1,5 @@
 #!/bin/bash
-for ((number=1;number < 4;number++))
+for ((number=1;number < 6;number++))
 {
 gcc test$number.cpp -O0 -o test$number -lstdc++
 clang++ -emit-llvm -c test$number.cpp -o test$number.bc
