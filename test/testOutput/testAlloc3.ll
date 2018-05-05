@@ -1,13 +1,21 @@
-; ModuleID = 'test3.bc'
-source_filename = "test3.bc"
+; ModuleID = './testOutput/testAlloc3.bc'
+source_filename = "./testOutput/test3.bc"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-pc-linux-gnu"
 
 ; Function Attrs: norecurse nounwind uwtable
 define i32 @main(i32 %argc, i8** %argv) #0 {
+  %sdfasdf = alloca double
+  store double 2.000000e+00, double* %sdfasdf
   %1 = alloca i32, align 4
+  %dfasdf = alloca double
+  store double 2.000000e+00, double* %dfasdf
   %2 = alloca i32, align 4
+  %fasdf = alloca double
+  store double 2.000000e+00, double* %fasdf
   %3 = alloca i8**, align 8
+  %asdf = alloca double
+  store double 2.000000e+00, double* %asdf
   %a = alloca i32, align 4
   store i32 0, i32* %1, align 4
   store i32 %argc, i32* %2, align 4

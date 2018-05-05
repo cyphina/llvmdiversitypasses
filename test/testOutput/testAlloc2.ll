@@ -1,5 +1,5 @@
-; ModuleID = 'test1.bc'
-source_filename = "test1.bc"
+; ModuleID = './testOutput/testAlloc2.bc'
+source_filename = "./testOutput/test2.bc"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-pc-linux-gnu"
 
@@ -24,7 +24,7 @@ target triple = "x86_64-pc-linux-gnu"
 @__dso_handle = external global i8
 @_ZSt4cout = external global %"class.std::basic_ostream", align 8
 @.str = private unnamed_addr constant [2 x i8] c" \00", align 1
-@llvm.global_ctors = appending global [1 x { i32, void ()*, i8* }] [{ i32, void ()*, i8* } { i32 65535, void ()* @_GLOBAL__sub_I_test1.cpp, i8* null }]
+@llvm.global_ctors = appending global [1 x { i32, void ()*, i8* }] [{ i32, void ()*, i8* } { i32 65535, void ()* @_GLOBAL__sub_I_test2.cpp, i8* null }]
 
 ; Function Attrs: uwtable
 define internal void @__cxx_global_var_init() #0 section ".text.startup" {
@@ -42,10 +42,21 @@ declare i32 @__cxa_atexit(void (i8*)*, i8*, i8*) #2
 
 ; Function Attrs: norecurse uwtable
 define i32 @main(i32 %agrc, i8** %agrv) #3 {
+  %sdfasdf = alloca double
+  store double 2.000000e+00, double* %sdfasdf
   %1 = alloca i32, align 4
+  %dfasdf = alloca double
+  store double 2.000000e+00, double* %dfasdf
   %2 = alloca i8**, align 8
+  %fasdf = alloca double
+  store double 2.000000e+00, double* %fasdf
   %number = alloca i32, align 4
+  %asdf = alloca double
+  store double 2.000000e+00, double* %asdf
   %papaya = alloca i32, align 4
+  %sdf = alloca double
+  store double 2.000000e+00, double* %sdf
+  %banana = alloca i32, align 4
   store i32 %agrc, i32* %1, align 4
   store i8** %agrv, i8*** %2, align 8
   store i32 5, i32* %number, align 4
@@ -55,6 +66,7 @@ define i32 @main(i32 %agrc, i8** %agrv) #3 {
   %5 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc(%"class.std::basic_ostream"* dereferenceable(272) %4, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str, i32 0, i32 0))
   %6 = load i32, i32* %papaya, align 4
   %7 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"* %5, i32 %6)
+  store i32 3, i32* %banana, align 4
   ret i32 0
 }
 
@@ -63,7 +75,7 @@ declare dereferenceable(272) %"class.std::basic_ostream"* @_ZStlsISt11char_trait
 declare dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"*, i32) #1
 
 ; Function Attrs: uwtable
-define internal void @_GLOBAL__sub_I_test1.cpp() #0 section ".text.startup" {
+define internal void @_GLOBAL__sub_I_test2.cpp() #0 section ".text.startup" {
   call void @__cxx_global_var_init()
   ret void
 }

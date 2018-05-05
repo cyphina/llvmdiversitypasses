@@ -1,5 +1,5 @@
-; ModuleID = 'test2.bc'
-source_filename = "test2.bc"
+; ModuleID = './testOutput/test5.bc'
+source_filename = "./testOutput/test5.bc"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-pc-linux-gnu"
 
@@ -23,8 +23,7 @@ target triple = "x86_64-pc-linux-gnu"
 @_ZStL8__ioinit = internal global %"class.std::ios_base::Init" zeroinitializer, align 1
 @__dso_handle = external global i8
 @_ZSt4cout = external global %"class.std::basic_ostream", align 8
-@.str = private unnamed_addr constant [2 x i8] c" \00", align 1
-@llvm.global_ctors = appending global [1 x { i32, void ()*, i8* }] [{ i32, void ()*, i8* } { i32 65535, void ()* @_GLOBAL__sub_I_test2.cpp, i8* null }]
+@llvm.global_ctors = appending global [1 x { i32, void ()*, i8* }] [{ i32, void ()*, i8* } { i32 65535, void ()* @_GLOBAL__sub_I_test5.cpp, i8* null }]
 
 ; Function Attrs: uwtable
 define internal void @__cxx_global_var_init() #0 section ".text.startup" {
@@ -40,32 +39,32 @@ declare void @_ZNSt8ios_base4InitD1Ev(%"class.std::ios_base::Init"*) #1
 ; Function Attrs: nounwind
 declare i32 @__cxa_atexit(void (i8*)*, i8*, i8*) #2
 
-; Function Attrs: norecurse uwtable
-define i32 @main(i32 %agrc, i8** %agrv) #3 {
+; Function Attrs: nounwind uwtable
+define i32 @_Z3bari(i32 %N) #3 {
   %1 = alloca i32, align 4
-  %2 = alloca i8**, align 8
-  %number = alloca i32, align 4
-  %papaya = alloca i32, align 4
-  %banana = alloca i32, align 4
-  store i32 %agrc, i32* %1, align 4
-  store i8** %agrv, i8*** %2, align 8
-  store i32 5, i32* %number, align 4
-  store i32 4, i32* %papaya, align 4
-  %3 = load i32, i32* %number, align 4
-  %4 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"* @_ZSt4cout, i32 %3)
-  %5 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc(%"class.std::basic_ostream"* dereferenceable(272) %4, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str, i32 0, i32 0))
-  %6 = load i32, i32* %papaya, align 4
-  %7 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"* %5, i32 %6)
-  store i32 3, i32* %banana, align 4
-  ret i32 0
+  store i32 %N, i32* %1, align 4
+  %2 = load i32, i32* %1, align 4
+  %3 = add nsw i32 5, %2
+  ret i32 %3
 }
 
-declare dereferenceable(272) %"class.std::basic_ostream"* @_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc(%"class.std::basic_ostream"* dereferenceable(272), i8*) #1
+; Function Attrs: norecurse uwtable
+define i32 @main(i32 %agrc, i8** %agrv) #4 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca i8**, align 8
+  store i32 0, i32* %1, align 4
+  store i32 %agrc, i32* %2, align 4
+  store i8** %agrv, i8*** %3, align 8
+  %4 = call i32 @_Z3bari(i32 5)
+  %5 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"* @_ZSt4cout, i32 %4)
+  ret i32 0
+}
 
 declare dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"*, i32) #1
 
 ; Function Attrs: uwtable
-define internal void @_GLOBAL__sub_I_test2.cpp() #0 section ".text.startup" {
+define internal void @_GLOBAL__sub_I_test5.cpp() #0 section ".text.startup" {
   call void @__cxx_global_var_init()
   ret void
 }
@@ -73,7 +72,8 @@ define internal void @_GLOBAL__sub_I_test2.cpp() #0 section ".text.startup" {
 attributes #0 = { uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #2 = { nounwind }
-attributes #3 = { norecurse uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #3 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #4 = { norecurse uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 
 !llvm.ident = !{!0}
 

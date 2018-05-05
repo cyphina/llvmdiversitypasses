@@ -1,5 +1,5 @@
-; ModuleID = 'testAlloc5.bc'
-source_filename = "test5.bc"
+; ModuleID = './testOutput/testAllocx2-1.bc'
+source_filename = "./testOutput/test1.bc"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-pc-linux-gnu"
 
@@ -23,7 +23,8 @@ target triple = "x86_64-pc-linux-gnu"
 @_ZStL8__ioinit = internal global %"class.std::ios_base::Init" zeroinitializer, align 1
 @__dso_handle = external global i8
 @_ZSt4cout = external global %"class.std::basic_ostream", align 8
-@llvm.global_ctors = appending global [1 x { i32, void ()*, i8* }] [{ i32, void ()*, i8* } { i32 65535, void ()* @_GLOBAL__sub_I_test5.cpp, i8* null }]
+@.str = private unnamed_addr constant [2 x i8] c" \00", align 1
+@llvm.global_ctors = appending global [1 x { i32, void ()*, i8* }] [{ i32, void ()*, i8* } { i32 65535, void ()* @_GLOBAL__sub_I_test1.cpp, i8* null }]
 
 ; Function Attrs: uwtable
 define internal void @__cxx_global_var_init() #0 section ".text.startup" {
@@ -39,40 +40,54 @@ declare void @_ZNSt8ios_base4InitD1Ev(%"class.std::ios_base::Init"*) #1
 ; Function Attrs: nounwind
 declare i32 @__cxa_atexit(void (i8*)*, i8*, i8*) #2
 
-; Function Attrs: nounwind uwtable
-define i32 @_Z3bari(i32 %N) #3 {
-  %sdfasdf = alloca double
-  store double 2.000000e+00, double* %sdfasdf
-  %1 = alloca i32, align 4
-  store i32 %N, i32* %1, align 4
-  %2 = load i32, i32* %1, align 4
-  %3 = add nsw i32 5, %2
-  ret i32 %3
-}
-
 ; Function Attrs: norecurse uwtable
-define i32 @main(i32 %agrc, i8** %agrv) #4 {
+define i32 @main(i32 %agrc, i8** %agrv) #3 {
+  %sdfasdf1 = alloca double
+  store double 2.000000e+00, double* %sdfasdf1
   %sdfasdf = alloca double
   store double 2.000000e+00, double* %sdfasdf
+  %dfasdf2 = alloca double
+  store double 2.000000e+00, double* %dfasdf2
   %1 = alloca i32, align 4
+  %fasdf3 = alloca double
+  store double 2.000000e+00, double* %fasdf3
   %dfasdf = alloca double
   store double 2.000000e+00, double* %dfasdf
-  %2 = alloca i32, align 4
+  %asdf4 = alloca double
+  store double 2.000000e+00, double* %asdf4
+  %2 = alloca i8**, align 8
+  %sdf = alloca double
+  store double 2.000000e+00, double* %sdf
   %fasdf = alloca double
   store double 2.000000e+00, double* %fasdf
-  %3 = alloca i8**, align 8
-  store i32 0, i32* %1, align 4
-  store i32 %agrc, i32* %2, align 4
-  store i8** %agrv, i8*** %3, align 8
-  %4 = call i32 @_Z3bari(i32 5)
+  %df = alloca double
+  store double 2.000000e+00, double* %df
+  %number = alloca i32, align 4
+  %f = alloca double
+  store double 2.000000e+00, double* %f
+  %asdf = alloca double
+  store double 2.000000e+00, double* %asdf
+  %3 = alloca double
+  store double 2.000000e+00, double* %3
+  %papaya = alloca i32, align 4
+  store i32 %agrc, i32* %1, align 4
+  store i8** %agrv, i8*** %2, align 8
+  store i32 5, i32* %number, align 4
+  store i32 4, i32* %papaya, align 4
+  %4 = load i32, i32* %number, align 4
   %5 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"* @_ZSt4cout, i32 %4)
+  %6 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc(%"class.std::basic_ostream"* dereferenceable(272) %5, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str, i32 0, i32 0))
+  %7 = load i32, i32* %papaya, align 4
+  %8 = call dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"* %6, i32 %7)
   ret i32 0
 }
+
+declare dereferenceable(272) %"class.std::basic_ostream"* @_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc(%"class.std::basic_ostream"* dereferenceable(272), i8*) #1
 
 declare dereferenceable(272) %"class.std::basic_ostream"* @_ZNSolsEi(%"class.std::basic_ostream"*, i32) #1
 
 ; Function Attrs: uwtable
-define internal void @_GLOBAL__sub_I_test5.cpp() #0 section ".text.startup" {
+define internal void @_GLOBAL__sub_I_test1.cpp() #0 section ".text.startup" {
   call void @__cxx_global_var_init()
   ret void
 }
@@ -80,8 +95,7 @@ define internal void @_GLOBAL__sub_I_test5.cpp() #0 section ".text.startup" {
 attributes #0 = { uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #2 = { nounwind }
-attributes #3 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #4 = { norecurse uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #3 = { norecurse uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
 
 !llvm.ident = !{!0}
 

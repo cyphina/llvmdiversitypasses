@@ -1,5 +1,5 @@
-; ModuleID = 'testAlloc4.bc'
-source_filename = "test4.bc"
+; ModuleID = './testOutput/testAllocx2-4.bc'
+source_filename = "./testOutput/test4.bc"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-pc-linux-gnu"
 
@@ -41,14 +41,26 @@ declare i32 @__cxa_atexit(void (i8*)*, i8*, i8*) #2
 
 ; Function Attrs: norecurse uwtable
 define i32 @main(i32 %agrc, i8** %agrv) #3 {
+  %sdfasdf1 = alloca double
+  store double 2.000000e+00, double* %sdfasdf1
   %sdfasdf = alloca double
   store double 2.000000e+00, double* %sdfasdf
+  %dfasdf2 = alloca double
+  store double 2.000000e+00, double* %dfasdf2
   %1 = alloca i32, align 4
+  %fasdf3 = alloca double
+  store double 2.000000e+00, double* %fasdf3
   %dfasdf = alloca double
   store double 2.000000e+00, double* %dfasdf
+  %asdf = alloca double
+  store double 2.000000e+00, double* %asdf
   %2 = alloca i32, align 4
+  %sdf = alloca double
+  store double 2.000000e+00, double* %sdf
   %fasdf = alloca double
   store double 2.000000e+00, double* %fasdf
+  %df = alloca double
+  store double 2.000000e+00, double* %df
   %3 = alloca i8**, align 8
   store i32 0, i32* %1, align 4
   store i32 %agrc, i32* %2, align 4
