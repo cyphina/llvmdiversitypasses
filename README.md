@@ -15,3 +15,7 @@ Get native assembly from llvm bytecode
 ```
 llc <bitcode-file-name> -o <output-name>
 ```
+Run a pass as a shared object and output some time metrics (specify path-arg-name in InitializezPass macros)
+```
+opt -time-passes -load <path-to-pass-so-file> -<pass-arg-name> <pass-bitcode-name> -o <output-name>
+```
