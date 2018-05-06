@@ -15,3 +15,4 @@ gcc ./testOutput/testAllocx2-$number.o -O0 -o ./testOutput/testAllocx2-$number -
 }
 
 gcc testNop.cpp -O0 -o ./testOutput/testNop3 -lstdc++
+gcc testNop2.cpp -O0 -o ./testOutput/testNop32 -lstdc++

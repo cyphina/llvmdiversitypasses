@@ -19,6 +19,7 @@ def test(filename1, filename2):
     #Different Tests for the Files
     testAlloc(f1main, f2main)
     testNop(f1main, f2main)
+    testNoopDistance(f1main, f2main)
 
     r2f1.quit()
     r2f2.quit()
@@ -35,9 +36,9 @@ def testAlloc(fileJson1, fileJson2):
         if op["disasm"].find("mov ") >= 0 and ignoreList.count(op["disasm"]) == 0:
             remain2.append(op["disasm"])
 
-
     r1 = []
     r2 = []
+
     contain = False
     for op in remain1:
         for op2 in remain2:
@@ -73,10 +74,36 @@ def testNop(fileJson1, fileJson2):
         if op["disasm"].find("nop") >= 0:
             remain2.append(op["disasm"])
 
-    print "Nop Check: "
+    print "Nop Check (Difference in Line): "
     print "File1: ", remain1, len(remain1)
     print "File2: ", remain2, len(remain2)
     print "File2 - File1: ", len(remain2) - len(remain1)
+
+#Check the additional Noops in file2, and check to see if they are somewhat spread out
+def testNoopDistance(fileJson1, fileJson2):
+    remain1 = []
+    remain2 = []
+
+    for op in fileJson1["ops"]:
+        if op["disasm"].find("nop") >= 0:
+            remain1.append(op["offset"])
+
+    for op in fileJson2["ops"]:
+        if op["disasm"].find("nop") >= 0:
+            remain2.append(op["offset"])
+
+    print "Check only addional noops"
+    print "File1: ", remain1, len(remain1)
+    print "File2: ", remain2, len(remain2)
+
+    noopsOnlyIn2 = [elem for elem in remain2 if elem not in remain1]
+    print noopsOnlyIn2
+    if(len(noopsOnlyIn2) > 3):
+        dist1 = noopsOnlyIn2[len(noopsOnlyIn2)/2] - noopsOnlyIn2[0]
+        dist2 = noopsOnlyIn2[len(noopsOnlyIn2) - 1] - noopsOnlyIn2[len(noopsOnlyIn2)/2]
+        print "Noop distance test score: ", (dist1+dist2)/2
+    else:
+        print "Noop distance test score: 0"
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
