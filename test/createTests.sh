@@ -13,3 +13,5 @@ gcc ./testOutput/testAlloc$number.o -O0 -o ./testOutput/testAlloc$number -lstdc+
 ./build/bin/llc -filetype=obj ./testOutput/testAllocx2-$number.bc
 gcc ./testOutput/testAllocx2-$number.o -O0 -o ./testOutput/testAllocx2-$number -lstdc++
 }
+
+gcc testNop.cpp -O0 -o ./testOutput/testNop3 -lstdc++
