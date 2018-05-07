@@ -1,0 +1,14 @@
+File1,File2,Alloc Check, Noop Line Difference, Noop Difference based on Offsets
+../test/testOutput/test1,../test/testOutput/testAlloc1,0,0,0
+../test/testOutput/test2,../test/testOutput/testAlloc2,1,0,0
+../test/testOutput/test3,../test/testOutput/testAlloc3,5,0,0
+../test/testOutput/test4,../test/testOutput/testAlloc4,4,0,0
+../test/testOutput/test5,../test/testOutput/testAlloc5,4,0,0
+../test/testOutput/test1,../test/testOutput/testAllocx2-1,8,0,0
+../test/testOutput/test2,../test/testOutput/testAllocx2-2,11,0,0
+../test/testOutput/test3,../test/testOutput/testAllocx2-3,13,0,0
+../test/testOutput/test4,../test/testOutput/testAllocx2-4,10,0,0
+../test/testOutput/test5,../test/testOutput/testAllocx2-5,10,0,0
+../test/testOutput/test3,../test/testOutput/testNop3,0,6,6
+../test/testOutput/test3,../test/testOutput/testNop32,2,9,14
+../test/testOutput/testNop3,../test/testOutput/testNop32,2,3,5

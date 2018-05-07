@@ -1,0 +1,13 @@
+../test/testOutput/test1,../test/testOutput/testAlloc1
+../test/testOutput/test2,../test/testOutput/testAlloc2
+../test/testOutput/test3,../test/testOutput/testAlloc3
+../test/testOutput/test4,../test/testOutput/testAlloc4
+../test/testOutput/test5,../test/testOutput/testAlloc5
+../test/testOutput/test1,../test/testOutput/testAllocx2-1
+../test/testOutput/test2,../test/testOutput/testAllocx2-2
+../test/testOutput/test3,../test/testOutput/testAllocx2-3
+../test/testOutput/test4,../test/testOutput/testAllocx2-4
+../test/testOutput/test5,../test/testOutput/testAllocx2-5
+../test/testOutput/test3,../test/testOutput/testNop3
+../test/testOutput/test3,../test/testOutput/testNop32
+../test/testOutput/testNop3,../test/testOutput/testNop32
