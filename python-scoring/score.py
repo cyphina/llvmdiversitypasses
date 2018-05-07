@@ -118,7 +118,7 @@ def testNoopDistance(fileJson1, fileJson2):
 
 def testList(listFile):
     if filetype == "csv":
-        retfile.append("File1,File2,Alloc Check, Noop Line Difference, Noop Difference based on Offsets\n")
+        retfile.append("File1,File2,Alloc Check, Noop Line Difference, Noop Difference based on Offsets, Jaccard Score Index\n")
     temp = ""
     f = open(listFile, "r")
     fl =f.readlines()
@@ -149,7 +149,7 @@ if __name__ == "__main__":
                 print "Runnin Scoring Test on ", sys.argv[1], ",", sys.argv[2]
                 test(sys.argv[1], sys.argv[2])
         elif len(sys.argv) == 4 and (sys.argv[1] == "--list" or sys.argv[1] == "-l") and sys.argv[2] != "" and sys.argv[3] == "-csv":
-            print "Createing a CSV for the Testlist: ", sys.argv[2]
+            print "Creating a CSV for the Testlist: ", sys.argv[2]
             filetype = "csv"
             testList(sys.argv[2])
         else:

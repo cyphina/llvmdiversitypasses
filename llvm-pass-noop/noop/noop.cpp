@@ -13,25 +13,29 @@
 #include "../lib/Target/X86/X86GenInstrInfo.inc"
 
 #define GET_REGINFO_ENUM
-#include "../lib/Target/X86/X86GenRegisterInfo.inc.tmp"
+#include "../lib/Target/X86/X86GenRegisterInfo.inc"
+
+#define DEBUG_TYPE "noop-inserter"
 
 namespace llvm {
+
+char NoopInserter::ID = 0;
 
 NoopInserter::NoopInserter() : llvm::MachineFunctionPass(ID) {}
 
 bool NoopInserter::runOnMachineFunction(llvm::MachineFunction &fn) {
   // if(!RNG)
   // RNG.reset(fn.getFunction().getParent()->createRNG(this));
-
+  errs() << "Function body:\n";
   auto RNG = fn.getFunction().getParent()->createRNG(this);
 
   const llvm::TargetInstrInfo &TII = *(fn.getSubtarget().getInstrInfo());
   MachineBasicBlock &bb = *fn.begin();
 
-  int numNoops = (*RNG)() % 100;
+int numNoops = (*RNG)() % 100;
 
-  for (int i = 0; i < numNoops; ++i) {
-    llvm::BuildMI(bb, bb.begin(), llvm::DebugLoc(), TII.get(llvm::X86::NOOP));
+for (int i = 0; i < numNoops; ++i) {
+  llvm::BuildMI(bb, bb.begin(), llvm::DebugLoc(), TII.get(llvm::X86::NOOP));
   }
   return true;
 }
@@ -40,7 +44,8 @@ bool NoopInserter::runOnMachineFunction(llvm::MachineFunction &fn) {
 
 using namespace llvm;
 
-char NoopInserter::ID = 0;
-char &llvm::NoopInserterID = NoopInserterID;
+char &llvm::NoopInserterID = NoopInserter::ID;
 
-INITIALIZE_PASS(NoopInserter, "noop-inserter", "NoopInserter", false, false)
+INITIALIZE_PASS(NoopInserter, "noop-inserter2",
+                "Noop Insertion for fine-grained code randomization", false,
+                false)
