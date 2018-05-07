@@ -63,12 +63,17 @@ def testAlloc(fileJson1, fileJson2):
             r2.append(op)
         contain = False
 
+    total = len(r2) - len(r1)
+
     print "Alloc/Store Check: "
     print "File1: ", r1, len(r1)
     print "File2: ", r2, len(r2)
-    print "File2 - File1: ", len(r2) - len(r1)
-
-    return len(r2) - len(r1)
+    print "File2 - File1: ", total
+    
+    if(total > 0):
+        return total
+    else:
+        return 0
 
 def testNop(fileJson1, fileJson2):
     remain1 = []

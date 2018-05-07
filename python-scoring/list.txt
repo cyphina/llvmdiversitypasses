@@ -8,6 +8,11 @@
 ../test/testOutput/test3,../test/testOutput/testAllocx2-3
 ../test/testOutput/test4,../test/testOutput/testAllocx2-4
 ../test/testOutput/test5,../test/testOutput/testAllocx2-5
+../test/testOutput/test1,../test/testOutput/testNoop1
+../test/testOutput/test2,../test/testOutput/testNoop2
+../test/testOutput/test3,../test/testOutput/testNoop3
+../test/testOutput/test4,../test/testOutput/testNoop4
+../test/testOutput/test5,../test/testOutput/testNoop5
 ../test/testOutput/test3,../test/testOutput/testNop3
 ../test/testOutput/test3,../test/testOutput/testNop32
 ../test/testOutput/testNop3,../test/testOutput/testNop32
