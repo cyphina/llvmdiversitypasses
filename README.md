@@ -19,3 +19,7 @@ Run a pass as a shared object and output some time metrics (specify path-arg-nam
 ```
 opt -time-passes -load <path-to-pass-so-file> -<pass-arg-name> <pass-bitcode-name> -o <output-name>
 ```
+Run the python scoring script
+```
+python score.py -l list.txt -csv
+```
