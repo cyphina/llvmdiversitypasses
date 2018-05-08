@@ -1,6 +1,7 @@
 import r2pipe
 import sys
 import math
+import os
 
 retfile = []
 filetype = ""
@@ -20,7 +21,10 @@ def test(filename1, filename2):
     f1main = r2f1.cmdj("pdfj")
     f2main = r2f2.cmdj("pdfj")
 
-    #Store results from different tests 
+    #Store results from different tests
+    print(os.path.getsize(filename2))
+    print(os.path.getsize(filename1))
+    sizediff = os.path.getsize(filename2) - os.path.getsize(filename1)
     reta = testAlloc(f1main, f2main)
     retnl = testNop(f1main, f2main)
     retnd = testNoopDistance(f1main, f2main)
@@ -29,7 +33,7 @@ def test(filename1, filename2):
     r2f1.quit()
     r2f2.quit()
 
-    return "," + str(reta) + "," + str(retnl) + "," + str(retnd) + "," + str(retjs)
+    return "," + str(sizediff) + "," + str(reta) + "," + str(retnl) + "," + str(retnd) + "," + str(retjs)
 
 #Test difference in alloca instruction count
 def testAlloc(fileJson1, fileJson2):
@@ -72,7 +76,7 @@ def testAlloc(fileJson1, fileJson2):
     print ("File1: ", r1, len(r1))
     print ("File2: ", r2, len(r2))
     print ("File2 - File1: ", total)
-    
+
     if(total > 0):
         return total
     else:
@@ -100,7 +104,7 @@ def testNop(fileJson1, fileJson2):
 #Check the additional Noops in file2, and check to see if they are somewhat spread out
 def testNoopDistance(fileJson1, fileJson2):
     remain1 = [] #list of addresses of Noop Instructions in list 1
-    remain2 = [] #list of addresses of Noop Instructions in list 2 
+    remain2 = [] #list of addresses of Noop Instructions in list 2
 
     for op in fileJson1["ops"]:
         if op["disasm"].find("nop") >= 0:
@@ -129,7 +133,7 @@ def testNoopDistance(fileJson1, fileJson2):
 #Check the similarity (0 = different, 1 = similar) in Noop location/distribution between the two files.  If one file has no noops, expect 0 as the score
 def testJaccardSim(fileJson1, fileJson2):
     remain1 = set() #set of addresses of Noop Instructions in list 1
-    remain2 = set() #set of addresses of Noop Instructions in list 2 
+    remain2 = set() #set of addresses of Noop Instructions in list 2
 
     for op in fileJson1["ops"]:
         if op["disasm"].find("nop") >= 0:
@@ -144,7 +148,7 @@ def testJaccardSim(fileJson1, fileJson2):
     print ("File2: ", remain2, len(remain2))
 
     if len(remain1 | remain2):
-        jaccard = len(remain1 & remain2) / len(remain1 | remain2)  
+        jaccard = len(remain1 & remain2) / len(remain1 | remain2)
     else: #both are empty sets
         jaccard = 0
 
@@ -154,7 +158,7 @@ def testJaccardSim(fileJson1, fileJson2):
 #Creates list of results from tests
 def testList(listFile):
     if filetype == "csv":
-        retfile.append("File1,File2,Alloc Check, Noop Line Difference, Noop Difference based on Offsets, Noop Jaccard Score Index\n")
+        retfile.append("File1,File2,Size Diff,Alloc Diff, Noop Line Diff, Noop Diff based on Offsets, Noop Jaccard Score Index\n")
     temp = ""
     f = open(listFile, "r")
     fl =f.readlines()
@@ -166,7 +170,6 @@ def testList(listFile):
             temp += "\n"
             retfile.append(temp)
             temp = ""
-            print (retfile)
     f.close()
     if filetype == "csv":
         rf = open("result.csv", "w+")
