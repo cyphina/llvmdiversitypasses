@@ -14,6 +14,11 @@ File1,File2,Size Diff,Alloc Diff, Noop Line Diff, Noop Diff based on Offsets, No
 ../test/testOutput/test3,../test/testOutput/testNoop3,-520,1,91,45.0,0.0
 ../test/testOutput/test4,../test/testOutput/testNoop4,-344,1,76,37.5,0.0
 ../test/testOutput/test5,../test/testOutput/testNoop5,-344,1,48,23.5,0.0
+../test/testOutput/test1,../test/testOutput/testNoopAlloc1,-352,0,73,36.0,0.0
+../test/testOutput/test2,../test/testOutput/testNoopAlloc2,-352,1,30,14.5,0.0
+../test/testOutput/test3,../test/testOutput/testNoopAlloc3,-520,5,39,19.0,0.0
+../test/testOutput/test4,../test/testOutput/testNoopAlloc4,-344,4,65,32.0,0.0
+../test/testOutput/test5,../test/testOutput/testNoopAlloc5,-344,4,82,40.5,0.0
 ../test/testOutput/test3,../test/testOutput/testNop3,8,0,6,6.0,0.0
 ../test/testOutput/test3,../test/testOutput/testNop32,8,2,9,14.5,0.0
 ../test/testOutput/testNop3,../test/testOutput/testNop32,0,2,3,5.0,0.5

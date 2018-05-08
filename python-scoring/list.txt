@@ -13,11 +13,11 @@
 ../test/testOutput/test3,../test/testOutput/testNoop3
 ../test/testOutput/test4,../test/testOutput/testNoop4
 ../test/testOutput/test5,../test/testOutput/testNoop5
-../test/testOutput/test1,../test/testOutput/testAllocNoop1
-../test/testOutput/test2,../test/testOutput/testAllocNoop2
-../test/testOutput/test3,../test/testOutput/testAllocNoop3
-../test/testOutput/test4,../test/testOutput/testAllocNoop4
-../test/testOutput/test5,../test/testOutput/testAllocNoop5
+../test/testOutput/test1,../test/testOutput/testNoopAlloc1
+../test/testOutput/test2,../test/testOutput/testNoopAlloc2
+../test/testOutput/test3,../test/testOutput/testNoopAlloc3
+../test/testOutput/test4,../test/testOutput/testNoopAlloc4
+../test/testOutput/test5,../test/testOutput/testNoopAlloc5
 ../test/testOutput/test3,../test/testOutput/testNop3
 ../test/testOutput/test3,../test/testOutput/testNop32
 ../test/testOutput/testNop3,../test/testOutput/testNop32
